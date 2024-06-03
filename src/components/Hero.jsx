@@ -45,6 +45,7 @@ export default () => {
     }, [isChecked])
 
     const handleSubmit = (e) => {
+        e.perventDefault();
         const email = $('.email').val();
         const fname = $('.fname').val();
         const lname = $('.lname').val();
@@ -56,7 +57,8 @@ export default () => {
                 lname
             },
                 { headers: { 'Accept': 'application/json' } })
-            .then(response => console.log(response))
+            .then(response => response.json())
+            .then(data=> alert(`Form Submited Successful`))
             .catch(error => console.log(error))
 
     }
